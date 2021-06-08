@@ -1,7 +1,7 @@
 // Full Documentation - https://docs.turbo360.co
 const vertex = require('vertex360')({ site_id: process.env.TURBO_APP_ID })
 const express = require('express')
-const methodoverride=require('method-override')
+var methodOverride = require('method-override')
 const ejs=require('ejs')
 const Article=require('./models/article')
 const mongoose=require('mongoose')
@@ -16,8 +16,9 @@ mongoose.connect('mongodb://localhost/blogPost',{ useNewUrlParser: true, useUnif
 
 
 const app = express() // initialize app
+app.use(methodOverride('_method'))
 app.use(express.urlencoded({extended:false}))
-app.get(methodoverride('_method'))
+
 const mainRoutes=require('./routes/main')
 
 // app.set('views', './views');

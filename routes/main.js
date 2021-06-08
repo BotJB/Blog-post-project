@@ -42,7 +42,7 @@ res.render('shownew',{article:article})
   
 
 })
-router.delete('articles/:id',async(req,res)=>{
+router.delete('/:id',async(req,res)=>{
 await Article.findByIdAndDelete(req.params.id)
 res.redirect('/')
 })
